@@ -15,6 +15,6 @@ public class ChessSystem {
 
     public static void main(String[] args) {
         ChessMetch chessMetch = new ChessMetch();
-        UI.printBoard(chessMetch.getPiece());
+        UI.printBoard(chessMetch.getPieces());
     }
 }

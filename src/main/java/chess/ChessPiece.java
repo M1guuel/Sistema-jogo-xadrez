@@ -3,21 +3,22 @@ package chess;
 import boardgame.Board;
 import boardgame.Piece;
 
+
 /**
  *
  * @author gueel
  */
 public class ChessPiece extends Piece{
     
-    private Color cor;
+    private Color color;
 
-    public ChessPiece(Color cor, Board board) {
+    public ChessPiece(Color color, Board board) {
         super(board);
-        this.cor = cor;
+        this.color = color;
     }
 
-    public Color getCor() {
-        return cor;
+    public Color getColor() {
+        return color;
     }
 
    

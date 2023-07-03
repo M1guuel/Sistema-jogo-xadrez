@@ -9,5 +9,5 @@ package chess;
  * @author gueel
  */
 public enum Color {
-   BLACK,WHITER;
+   BLACK,WHITE;
 }

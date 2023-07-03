@@ -18,9 +18,10 @@ public class Piece {
         this.position = null;
     }
 
-   private Board getBoard() {
+   protected Board getBoard() {
         return board;
     }
+  
 
    
     
