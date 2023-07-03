@@ -4,6 +4,9 @@
 
 package main;
 
+import boardgame.Board;
+import chess.ChessMetch;
+
 /**
  *
  * @author gueel
@@ -11,6 +14,7 @@ package main;
 public class ChessSystem {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ChessMetch chessMetch = new ChessMetch();
+        UI.printBoard(chessMetch.getPiece());
     }
 }
