@@ -23,27 +23,37 @@ public class ChessSystem {
         Scanner sc = new Scanner(System.in);
         ChessMetch chessMetch = new ChessMetch();
         List<ChessPiece> captured = new ArrayList<>();
-        
-        while (true) {
+
+        while (!chessMetch.getCheckMatch()) {
             try {
                 UI.clearScreen();
-                UI.printMetch(chessMetch,captured);
+
+                UI.printMetch(chessMetch, captured);
                 System.out.println();
                 System.out.print("Source: ");
                 ChessPosition soucer = UI.readChessPosition(sc);
-                
+
                 boolean[][] possibleMoves = chessMetch.possibleMoves(soucer);
                 UI.clearScreen();
-                UI.printBoard(chessMetch.getPieces(),possibleMoves);
-
+                UI.printBoard(chessMetch.getPieces(), possibleMoves);
                 System.out.println();
                 System.out.print("Target: ");
                 ChessPosition target = UI.readChessPosition(sc);
                 ChessPiece capturedPiece = chessMetch.performChessMove(soucer, target);
-                if(captured!= null){
+
+                if (capturedPiece != null) {
                     captured.add(capturedPiece);
                 }
-                
+                if (chessMetch.getPromoted() != null) {
+                    System.out.println("ENTRE COM A PEÇA PROMOVIDA (B/N/R/Q): ");
+                    String type = sc.nextLine().toUpperCase();
+                    while (!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")) {
+                        System.out.println("ERRO: VALORES VALIDOS (B/N/R/Q)! ");
+                      type = sc.nextLine().toUpperCase();
+                    }
+                    chessMetch.replacePromotedPiece(type);
+                }
+
             } catch (ChessException e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
@@ -53,6 +63,8 @@ public class ChessSystem {
                 sc.nextLine();
             }
         }
+        UI.clearScreen();
+        UI.printMetch(chessMetch, captured);
 
     }
 }

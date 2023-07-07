@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+
 /**
  *
  * @author gueel
@@ -46,7 +47,7 @@ public class UI {
         System.out.flush();
     }
 
-    public static ChessPosition readChessPosition(Scanner sc) {
+    public static ChessPosition readChessPosition(Scanner sc ) {
         try {
             String s = sc.nextLine();
             char column = s.charAt(0);
@@ -58,15 +59,20 @@ public class UI {
         }
     }
 
-    public static void printMetch(ChessMetch chessMetch,List<ChessPiece> captured) {
+    public static void printMetch(ChessMetch chessMetch, List<ChessPiece> captured) {
         printBoard(chessMetch.getPieces());
         System.out.println();
         printCapturePieces(captured);
         System.out.println();
         System.out.println("TURNO : " + chessMetch.getTurno());
+        if(!chessMetch.getCheckMatch()){
         System.out.println("ESPERANDO O JOGADOR : " + chessMetch.getJogador());
         if(chessMetch.getCheck()){
             System.out.println("CHECK!");
+        }
+        }else {
+            System.out.println("CHECKMATE");
+            System.out.println("VEENCEDOR: "+ chessMetch.getJogador());
         }
     }
 
@@ -91,7 +97,7 @@ public class UI {
 
                 printPiece(pieces[i][j], possibleMoves[i][j]);
             }
-            System.out.println("");
+            System.out.println();
         }
         System.out.println("  A B C D E F G H");
     }
@@ -113,8 +119,9 @@ public class UI {
     }
 
     public static void printCapturePieces(List<ChessPiece> captured) {
-        List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList());
-        List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList());
+List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList());
+List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList());
+        
         System.out.println("PEÇAS CAPTURADAS: ");
         System.out.print("WHITE: ");
         System.out.print(ANSI_WHITE);

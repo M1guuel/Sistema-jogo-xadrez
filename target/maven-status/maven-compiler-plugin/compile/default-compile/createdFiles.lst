@@ -1,8 +1,12 @@
+chess\pieces\Pawn.class
 chess\ChessPiece.class
 chess\ChessPosition.class
 chess\Color.class
+chess\pieces\Knight.class
+chess\pieces\Queem.class
 boardgame\BoardExeception.class
 chess\pieces\King.class
+chess\pieces\Bishop.class
 chess\ChessMetch.class
 main\ChessSystem.class
 boardgame\Board.class
